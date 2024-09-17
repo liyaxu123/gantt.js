@@ -1,0 +1,177 @@
+:root {
+  --gantt-color-primary: #1890ff;
+  --gantt-color-primary-text: #ffffff;
+  --gantt-border-color: #f0f0f0;
+  --gant-border-radius: 4px;
+  --week-bg-color: #f9f9f9;
+}
+.my-gantt-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--gantt-border-color);
+  border-radius: var(--gant-border-radius);
+}
+.my-gantt-wrapper main {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  flex: 1;
+  will-change: transform;
+  will-change: overflow;
+}
+.my-gantt-time-axis {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 57px;
+}
+.my-gantt-time-axis .my-gantt-table-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.my-gantt-time-axis .my-gantt-time-axis {
+  width: 100%;
+  height: 56px;
+  position: absolute;
+  top: 0;
+  user-select: none;
+  overflow: hidden;
+  cursor: ew-resize;
+  border-bottom: 1px solid var(--gantt-border-color);
+}
+.my-gantt-time-axis .my-gantt-time-axis .my-gantt-time-axis-render-chunk {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+.my-gantt-time-axis .my-gantt-time-axis .my-gantt-time-axis-render-chunk .my-gantt-time-axis-major {
+  position: absolute;
+  overflow: hidden;
+  height: 28px;
+  border-right: 1px solid #f0f0f0;
+  font-weight: 500;
+  text-align: left;
+  font-size: 13px;
+  line-height: 28px;
+}
+.my-gantt-time-axis .my-gantt-time-axis .my-gantt-time-axis-render-chunk .my-gantt-time-axis-major .my-gantt-time-axis-major-label {
+  overflow: hidden;
+  padding-left: 8px;
+  white-space: nowrap;
+}
+.my-gantt-time-axis .my-gantt-time-axis .my-gantt-time-axis-render-chunk .my-gantt-time-axis-minor {
+  position: absolute;
+  top: 27px;
+  box-sizing: content-box;
+  height: 28px;
+  border-top: 1px solid #f0f0f0;
+  border-right: 1px solid #f0f0f0;
+  color: rgba(0, 0, 0, 0.65);
+  text-align: center;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 28px;
+}
+.my-gantt-time-axis .my-gantt-time-axis .my-gantt-time-axis-render-chunk .my-gantt-time-axis-minor[isWeek] {
+  background-color: var(--week-bg-color);
+}
+.my-gantt-time-axis .my-gantt-time-axis .my-gantt-time-axis-render-chunk .my-gantt-time-axis-minor[curDay] {
+  background-color: var(--gantt-color-primary);
+  color: #fff;
+  border-radius: var(--gant-border-radius);
+}
+.my-gantt-time-axis .my-gantt-time-back-today {
+  position: absolute;
+  top: 0;
+  background-color: #f2fbff;
+  box-shadow: 0 2px 4px rgba(1, 113, 194, 0.1);
+  transform: translate(12px, 14px);
+  transition: opacity 0.3s;
+  padding: 0 7px;
+  border: 1px solid #ccecff;
+  color: #1b9aee;
+  border-radius: 4px;
+  outline: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  user-select: none;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.my-gantt-time-axis .my-gantt-view-type-switch {
+  width: 90px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  outline: none;
+  border: 1px solid var(--gantt-border-color);
+  text-align: center;
+  color: #8c8c8c;
+  box-shadow: -10px 0px 10px -3px rgba(0, 0, 0, 0.1);
+}
+.my-gantt-chart-wrapper {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  will-change: transform;
+  will-change: overflow;
+}
+.my-gantt-chart-wrapper .my-gantt-chart {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-chart-svg-renderer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-render-chunk {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-render-chunk .my-gantt-invalid-task-bar {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-render-chunk .my-gantt-today {
+  position: absolute;
+  top: 0;
+  background: #3f51b5;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #ffffff;
+  pointer-events: none;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-render-chunk .my-gantt-today .my-gantt-today_line {
+  width: 1px;
+  background: #3f51b5;
+  margin-left: 15px;
+}
+.my-gantt-wrapper *,
+.my-gantt-wrapper *::before,
+.my-gantt-wrapper *::after {
+  box-sizing: border-box;
+}
