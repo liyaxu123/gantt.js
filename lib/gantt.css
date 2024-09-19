@@ -4,6 +4,7 @@
   --gantt-border-color: #f0f0f0;
   --gant-border-radius: 4px;
   --week-bg-color: #f9f9f9;
+  --gantt-task-bar-bg: rgba(0, 0, 0, 0.03);
 }
 .my-gantt-wrapper {
   box-sizing: border-box;
@@ -12,15 +13,6 @@
   overflow: hidden;
   border: 1px solid var(--gantt-border-color);
   border-radius: var(--gant-border-radius);
-}
-.my-gantt-wrapper main {
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
-  width: 100%;
-  flex: 1;
-  will-change: transform;
-  will-change: overflow;
 }
 .my-gantt-time-axis {
   position: relative;
@@ -128,7 +120,6 @@
   overflow-y: auto;
   width: 100%;
   height: 100%;
-  flex: 1;
   will-change: transform;
   will-change: overflow;
 }
@@ -141,34 +132,32 @@
   top: 0;
   left: 0;
 }
-.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-render-chunk {
-  position: absolute;
-  top: 0;
-  left: 0;
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk {
+  position: relative;
   will-change: transform;
 }
-.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-render-chunk .my-gantt-invalid-task-bar {
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row {
+  position: absolute;
+  will-change: top;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-row-style-bar {
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid var(--gantt-border-color);
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper {
   position: absolute;
   left: 0;
-  width: 100vw;
-}
-.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-render-chunk .my-gantt-today {
-  position: absolute;
   top: 0;
-  background: #3f51b5;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  line-height: 30px;
-  border-radius: 50%;
-  font-size: 12px;
-  color: #ffffff;
-  pointer-events: none;
+  display: flex;
+  align-items: center;
 }
-.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-render-chunk .my-gantt-today .my-gantt-today_line {
-  width: 1px;
-  background: #3f51b5;
-  margin-left: 15px;
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item {
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: #e9f5ff;
+  border: 1px solid #bae0ff;
 }
 .my-gantt-wrapper *,
 .my-gantt-wrapper *::before,
