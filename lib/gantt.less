@@ -5,6 +5,7 @@
   --gant-border-radius: 4px;
   --week-bg-color: #f9f9f9;
   --gantt-task-bar-bg: rgba(0, 0, 0, 0.03);
+  --gantt-today-line-color: #1890ff;
 }
 
 .my-gantt-wrapper {
@@ -133,8 +134,6 @@
     text-align: center;
     color: #8c8c8c;
     box-shadow: -10px 0px 10px -3px rgba(0, 0, 0, 0.1);
-
-    .my-gantt-view-type-option {}
   }
 }
 
@@ -171,9 +170,47 @@
         .my-gantt-task-row-style-bar {
           width: 100%;
           height: 40px;
-          // background-color: var(--gantt-task-bar-bg);
           border-bottom: 1px solid var(--gantt-border-color);
-          // will-change: transform;
+          display: flex;
+          align-items: center;
+
+          // 左侧返回按钮
+          .my-gantt-task-item-go-back-left-btn,
+          .my-gantt-task-item-go-back-right-btn {
+            width: 20px;
+            height: 20px;
+            font-size: 24px;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            user-select: none;
+            display: none;
+
+            &:hover {
+              transform: scale(1.5);
+              color: var(--gantt-color-primary);
+            }
+
+            &:active {
+              transform: scale((1));
+            }
+          }
+
+          .my-gantt-task-item-go-back-left-btn {
+            &[data-left-arrow="true"] {
+              display: block;
+            }
+          }
+
+          .my-gantt-task-item-go-back-right-btn {
+            margin-left: auto;
+            padding-right: 40px;
+
+            &[data-right-arrow="true"] {
+              display: block;
+            }
+          }
         }
 
         .my-gantt-task-item-wrapper {
@@ -189,9 +226,20 @@
             font-size: 12px;
             background-color: #e9f5ff;
             border: 1px solid #bae0ff;
+            white-space: nowrap;
           }
         }
       }
+    }
+
+    // 今日线
+    .my-gantt-today-line {
+      width: 1px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--gantt-today-line-color);
     }
   }
 }

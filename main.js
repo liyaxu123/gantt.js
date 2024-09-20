@@ -2,22 +2,26 @@ import './style.less';
 import Gantt from './lib/Gantt.js';
 import TimeAxis from './lib/TimeAxis.js';
 import dayjs from 'dayjs';
-import { getRandomInt } from './lib/utils.js'
+import { getRandomInt, randomTime } from './lib/utils.js'
 
 function getBarList() {
   const arr = [];
   for (let i = 0; i < 200; i++) {
+    const start = randomTime(2024, 2025);
+
     arr.push({
       id: i + 1,
       title: `任务${i + 1}`,
-      startDate: dayjs().format('YYYY-MM-DD'),
-      endDate: dayjs(new Date().getTime() + 1000 * 60 * 60 * 24 * getRandomInt(1, 10)).format('YYYY-MM-DD'),
+      startDate: start.format('YYYY-MM-DD'),
+      endDate: dayjs(start + 1000 * 60 * 60 * 24 * getRandomInt(0, 20)).format('YYYY-MM-DD'),
     });
   }
   return arr;
 }
 
 const tasks = getBarList();
+console.log('tasks', tasks);
+
 
 const gantt = new Gantt('#app', tasks, {
   viewType: 'day', // 视图类型
@@ -30,7 +34,6 @@ const gantt = new Gantt('#app', tasks, {
     console.log(viewType);
   },
 });
-console.log(gantt);
 
 new TimeAxis('#timeLine', {
   viewType: 'day', // 视图类型
