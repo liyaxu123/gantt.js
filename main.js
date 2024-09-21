@@ -24,7 +24,7 @@ console.log('tasks', tasks);
 
 
 const gantt = new Gantt('#app', tasks, {
-  viewType: 'day', // 视图类型
+  viewType: 'day', // 视图类型：quarter
   showViewTypeSwitch: true, // 是否显示视图切换按钮
   showBackToday: true, // 是否显示返回今日按钮
   lineColor: '#f0f0f0', // 线条颜色
