@@ -193,6 +193,7 @@
   background-color: #e9f5ff;
   border: 1px solid #bae0ff;
   white-space: nowrap;
+  cursor: pointer;
 }
 .my-gantt-chart-wrapper .my-gantt-chart .my-gantt-today-line {
   width: 1px;
