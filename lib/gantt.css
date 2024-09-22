@@ -187,13 +187,41 @@
   align-items: center;
 }
 .my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item {
-  padding: 4px 6px;
+  padding: 6px 10px;
   border-radius: 4px;
   font-size: 12px;
   background-color: #e9f5ff;
   border: 1px solid #bae0ff;
   white-space: nowrap;
   cursor: pointer;
+  position: relative;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item:hover .my-gantt-task-itme-resize-holder-left,
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item:hover .my-gantt-task-itme-resize-holder-right {
+  visibility: visible;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item .my-gantt-task-item-content {
+  user-select: none;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item .my-gantt-task-itme-resize-holder-left,
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item .my-gantt-task-itme-resize-holder-right {
+  width: 10px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.08);
+  cursor: e-resize;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  visibility: hidden;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item .my-gantt-task-itme-resize-holder-right {
+  left: unset;
+  right: 0;
 }
 .my-gantt-chart-wrapper .my-gantt-chart .my-gantt-today-line {
   width: 1px;
