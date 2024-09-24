@@ -33,6 +33,14 @@ const gantt = new Gantt('#app', tasks, {
   onViewTypeChange: (viewType) => {
     console.log(viewType);
   },
+  // 点击任务条时触发
+  onTaskBarClick: (taskData) => {
+    alert(taskData.title);
+  },
+  // 点击时间轴时触发
+  onTimelineClick: (data) => {
+    alert(data);
+  },
 });
 
 new TimeAxis('#timeLine', {

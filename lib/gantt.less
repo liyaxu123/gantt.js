@@ -1,11 +1,12 @@
 :root {
-  --gantt-color-primary: #1890ff;
+  --gantt-color-primary: #1677FF;
   --gantt-color-primary-text: #ffffff;
   --gantt-border-color: #f0f0f0;
   --gant-border-radius: 4px;
   --week-bg-color: #f9f9f9;
   --gantt-task-bar-bg: rgba(0, 0, 0, 0.03);
   --gantt-today-line-color: #1890ff;
+  --gantt-hover-bg-color: rgba(0, 0, 0, 0.03);
 }
 
 .my-gantt-wrapper {
@@ -18,7 +19,7 @@
 }
 
 // 时间轴样式
-.my-gantt-time-axis {
+.my-gantt-header {
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -39,8 +40,8 @@
     top: 0;
     user-select: none;
     overflow: hidden;
-    cursor: ew-resize;
     border-bottom: 1px solid var(--gantt-border-color);
+    cursor: pointer;
 
     // 时间轴渲染块
     .my-gantt-time-axis-render-chunk {
@@ -49,7 +50,6 @@
       position: absolute;
       top: 0;
       left: 0;
-      pointer-events: none;
       user-select: none;
       will-change: transform;
 
@@ -174,6 +174,10 @@
           display: flex;
           align-items: center;
 
+          &:hover {
+            background-color: var(--gantt-hover-bg-color);
+          }
+
           // 左侧返回按钮
           .my-gantt-task-item-go-back-left-btn,
           .my-gantt-task-item-go-back-right-btn {
@@ -198,6 +202,8 @@
           }
 
           .my-gantt-task-item-go-back-left-btn {
+            padding-left: 20px;
+
             &[data-left-arrow="true"] {
               display: block;
             }
@@ -221,7 +227,7 @@
           align-items: center;
 
           .my-gantt-task-item {
-            padding: 6px 10px;
+            height: 32px;
             border-radius: 4px;
             font-size: 12px;
             background-color: #e9f5ff;
@@ -230,38 +236,53 @@
             cursor: pointer;
             position: relative;
 
-            &:hover {
-              .my-gantt-task-itme-resize-holder-left,
-              .my-gantt-task-itme-resize-holder-right {
-                visibility: visible;
-              }
-            }
-
+            // 内容
             .my-gantt-task-item-content {
-              // padding: 0 10px;
+              height: 100%;
+              padding: 6px 10px;
               user-select: none;
+              display: flex;
+              align-items: center;
             }
 
-            .my-gantt-task-itme-resize-holder-left,
-            .my-gantt-task-itme-resize-holder-right {
-              width: 10px;
+            // 拖拽抓柄容器
+            .my-gantt-task-item-handle-wrapper {
+              width: 100%;
               height: 100%;
               position: absolute;
               top: 0;
               left: 0;
-              background-color: rgba(0, 0, 0, 0.08);
-              cursor: e-resize;
-              color: rgba(255, 255, 255, 0.8);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              user-select: none;
-              visibility: hidden;
+              border: 1px solid var(--gantt-color-primary);
+              border-radius: 4px;
+              display: none;
+
+              .my-gantt-task-itme-resize-holder-left,
+              .my-gantt-task-itme-resize-holder-right {
+                width: 10px;
+                height: 100% + 10px;
+                position: absolute;
+                top: -1px;
+                left: -5px;
+                background-color: var(--gantt-color-primary);
+                cursor: col-resize;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                user-select: none;
+                font-size: 18px;
+                border-radius: 4px 0px 0px 4px;
+              }
+
+              .my-gantt-task-itme-resize-holder-right {
+                left: unset;
+                right: -5px;
+                border-radius: 0px 4px 4px 0px;
+              }
             }
 
-            .my-gantt-task-itme-resize-holder-right {
-              left: unset;
-              right: 0;
+            &:hover .my-gantt-task-item-handle-wrapper {
+              display: block;
             }
           }
         }
