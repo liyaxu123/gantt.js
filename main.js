@@ -43,6 +43,10 @@ const gantt = new Gantt('#app', tasks, {
   },
 });
 
+// gantt.jumpTo('2022-12-01')
+// gantt.toggleViewTypeSwitch(false);
+gantt.toggleBackTodayBtn(false);
+
 new TimeAxis('#timeLine', {
   viewType: 'day', // 视图类型
 });
