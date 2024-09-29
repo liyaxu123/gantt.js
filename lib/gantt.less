@@ -7,6 +7,7 @@
   --gantt-task-bar-bg: rgba(0, 0, 0, 0.03);
   --gantt-today-line-color: #1890ff;
   --gantt-hover-bg-color: rgba(0, 0, 0, 0.03);
+  --gantt-drag-mask-bg: rgba(102, 152, 255, 0.08);
 }
 
 .my-gantt-wrapper {
@@ -235,6 +236,7 @@
             white-space: nowrap;
             cursor: pointer;
             position: relative;
+            z-index: 10;
 
             // 内容
             .my-gantt-task-item-content {
@@ -281,10 +283,51 @@
               }
             }
 
+            // tooltip容器
+            .my-gantt-task-item-tooltip-wrapper {
+              width: 100%;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              transform: translateY(100%);
+              display: none;
+            }
+
             &:hover .my-gantt-task-item-handle-wrapper {
               display: block;
             }
           }
+        }
+      }
+    }
+
+    // 拖动展示遮罩
+    .my-gantt-drag-mask-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      .my-gantt-drag-mask {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--gantt-drag-mask-bg);
+        border-left: 1px solid var(--gantt-color-primary);
+        border-right: 1px solid var(--gantt-color-primary);
+        display: none;
+        font-size: 14px;
+
+        .my-gantt-drag-mask-start {
+          position: absolute;
+          left: 0;
+          transform: translate(-110%, 50%);
+        }
+
+        .my-gantt-drag-mask-end {
+          position: absolute;
+          right: 0;
+          transform: translate(110%, 50%);
         }
       }
     }

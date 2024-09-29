@@ -41,6 +41,26 @@ const gantt = new Gantt('#app', tasks, {
   onTimelineClick: (data) => {
     alert(data);
   },
+  // 自定义tooltip
+  renderTooltip: (taskData) => {
+    return `
+    <div style="
+      min-width: 200px;
+      padding: 8px; 
+      line-height: 30px; 
+      background-color: #fff; 
+      border: 1px solid #eee; 
+      border-radius: 4px; 
+      margin-top: 4px; 
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);"
+    >
+      <div>任务名称：${taskData.title}</div>
+      <div>开始时间：${taskData.startDate}</div>
+      <div>结束时间：${taskData.endDate}</div>
+    </div>
+    `;
+  },
 });
 
 // gantt.jumpTo('2022-12-01')
