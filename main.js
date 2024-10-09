@@ -10,7 +10,7 @@ function getBarList() {
   // 优先级
   const priority = ['高', '中', '低'];
   const arr = [];
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < 20000; i++) {
     const start = randomTime(2024, 2025);
 
     arr.push({
@@ -20,6 +20,7 @@ function getBarList() {
       endDate: dayjs(start + 1000 * 60 * 60 * 24 * getRandomInt(0, 20)).format('YYYY-MM-DD'),
       status: status[getRandomInt(0, 3)],
       priority: priority[getRandomInt(0, 2)],
+      progress: getRandomInt(0, 100) / 100,
     });
   }
   return arr;
@@ -87,6 +88,7 @@ const gantt = new Gantt('#app', tasks, {
       <div>任务名称：${taskData.title}</div>
       <div>开始时间：${taskData.startDate}</div>
       <div>结束时间：${taskData.endDate}</div>
+      <div>完成进度：${Math.round(taskData.progress * 100)}%</div>
       <div>状态：
         <span style="background: ${bgColor[taskData.status]}; border-radius: 4px; padding: 2px 8px; color: #fff;">
           ${status[taskData.status]}

@@ -199,6 +199,31 @@
   position: relative;
   z-index: 10;
 }
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item .my-gantt-task-item-progress-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item .my-gantt-task-item-progress-wrapper .my-gantt-task-item-progress-text {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  pointer-events: none;
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item .my-gantt-task-item-progress-wrapper .my-gantt-task-item-progress-handle {
+  position: absolute;
+  left: 46%;
+  bottom: 0px;
+  z-index: 1;
+  cursor: col-resize;
+  transform: translate(-50%, 5px);
+  display: none;
+}
 .my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item .my-gantt-task-item-content {
   height: 100%;
   user-select: none;
@@ -258,6 +283,9 @@
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item:hover .my-gantt-task-item-progress-wrapper .my-gantt-task-item-progress-handle {
+  display: block;
 }
 .my-gantt-chart-wrapper .my-gantt-chart .my-gantt-task-bar-render-chunk .my-gantt-task-row .my-gantt-task-item-wrapper .my-gantt-task-item:hover .my-gantt-task-item-handle-wrapper {
   display: block;
